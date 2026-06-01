@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Maribella!</title>
+    
+    <!-- Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #c5838e; /* Rosa Envelhecido / Rose Gold */
+            --secondary: #d4af37; /* Dourado Elegante */
+            --bg-color: #faf7f2; /* Creme suave */
+            --text-dark: #2c2424;
+            --text-light: #5a4f4f;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* --- ANIMAÇÕES DE SCROLL --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO SECTION (PARALLAX) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-image: linear-gradient(rgba(44, 36, 36, 0.4), rgba(44, 36, 36, 0.6)), url('https://i.ibb.co/PsRCn06F/IMG-20260531-WA0542.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Efeito Parallax */
+            padding: 20px;
+            position: relative;
+            color: white;
+        }
+
+        .hero h3 {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            color: #fff;
+            margin-bottom: 0;
+            text-shadow: 2px 4px 15px rgba(0,0,0,0.4);
+            line-height: 1.2;
+        }
+
+        .hero .subtitle {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            font-size: 2rem;
+            color: white;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-20px); }
+            60% { transform: translateY(-10px); }
+        }
+
+        /* --- CONTEÚDO PRINCIPAL (GLASSMORPHISM) --- */
+        .container {
+            max-width: 1200px;
+            margin: -80px auto 0;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 120px;
+            gap: 40px;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .section-img {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+        }
+
+        .section-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            object-fit: cover;
+            max-height: 600px;
+        }
+
+        .section-img img:hover {
+            transform: scale(1.03) translateY(-10px);
+        }
+
+        .section-text {
+            flex: 1.2;
+            min-width: 320px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 20px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            margin-left: -50px; /* Sobreposição elegante */
+            z-index: 2;
+        }
+
+        .section:nth-child(even) .section-text {
+            margin-left: 0;
+            margin-right: -50px;
+        }
+
+        .section-text h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .section-text p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: 600;
+            font-style: italic;
+            font-size: 1.25rem;
+        }
+
+        /* --- GRID DE MOTIVOS --- */
+        .reasons {
+            padding: 100px 20px;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png') var(--bg-color);
+            position: relative;
+        }
+
+        .reasons::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(250,247,242,1), rgba(250,247,242,0.5), rgba(250,247,242,1));
+            z-index: 0;
+        }
+
+        .reasons-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .reasons-title {
+            text-align: center;
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 70px;
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .reason-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(197, 131, 142, 0.1);
+            border-top: 5px solid var(--primary);
+            transition: all 0.4s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 50px rgba(197, 131, 142, 0.2);
+            border-top-color: var(--secondary);
+        }
+
+        .reason-card i {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 25px;
+            background: rgba(212, 175, 55, 0.1);
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            border-radius: 50%;
+        }
+
+        .reason-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+
+        /* --- FINAL SECTION --- */
+        .final-section {
+            text-align: center;
+            padding: 120px 20px;
+            background: linear-gradient(135deg, rgba(197, 131, 142, 0.15) 0%, rgba(212, 175, 55, 0.15) 100%);
+        }
+
+        .final-section .quote-mark {
+            font-size: 6rem;
+            color: var(--primary);
+            opacity: 0.3;
+            line-height: 0;
+            margin-bottom: 30px;
+            display: block;
+            font-family: serif;
+        }
+
+        .final-section p.lead {
+            font-size: 1.8rem;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            color: var(--text-dark);
+            font-style: italic;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .final-section h1 {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .final-signature {
+            font-size: 4rem;
+            color: var(--secondary);
+            margin-top: 50px;
+        }
+
+        /* --- PLAYER DE MÚSICA FLUTUANTE --- */
+        .music-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: white;
+            padding: 10px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            z-index: 9999;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+        }
+
+        .music-widget:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(197, 131, 142, 0.3);
+        }
+
+        .vinyl-record {
+            width: 50px;
+            height: 50px;
+            background: #222;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            animation: spin 4s linear infinite;
+            animation-play-state: paused;
+        }
+
+        .vinyl-record::before {
+            content: '';
+            width: 15px;
+            height: 15px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .vinyl-record.playing {
+            animation-play-state: running;
+        }
+
+        .music-info {
+            padding-right: 15px;
+        }
+
+        .music-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        .music-info span {
+            font-size: 0.75rem;
+            color: var(--primary);
+        }
+
+        .play-btn-overlay {
+            position: absolute;
+            color: white;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 4rem; }
+            .hero .subtitle { font-size: 2rem; }
+            .section { flex-direction: column !important; margin-bottom: 80px; }
+            .section-text { margin: -40px 15px 0 15px !important; padding: 30px; }
+            .music-widget { bottom: 20px; right: 20px; }
+            .final-section h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÁUDIO (Link raw do GitHub) -->
+    <!-- Browsers bloqueiam autoplay, então o usuário precisa clicar no widget para iniciar -->
+    <audio id="bg-music" loop>
+        <source src="https://raw.githubusercontent.com/johndks4/workmdz/main/Cazuza%20-%20Exagerado%20(%C3%81udio%20Oficial)%20-%20Cazuza%20(youtube).mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
+    <!-- WIDGET DE MÚSICA -->
+    <div class="music-widget" id="music-toggle" onclick="toggleMusic()">
+        <div class="vinyl-record" id="vinyl">
+            <i class="fa-solid fa-play play-btn-overlay" id="play-icon"></i>
+        </div>
+        <div class="music-info">
+            <p>Amor da minha vida</p>
+            <span id="music-status">Clique para ouvir ❤️</span>
+        </div>
+    </div>
+
+    <!-- CABEÇALHO -->
+    <header class="hero">
+        <h3 class="fade-in">12 de Julho</h3>
+        <h1 class="script-font fade-in" style="transition-delay: 0.2s;">Maribella</h1>
+        <p class="subtitle fade-in" style="transition-delay: 0.4s;">(Maria Eduarda)</p>
+        <p class="fade-in" style="font-size: 1.3rem; font-style: italic; max-width: 700px; transition-delay: 0.6s;">
+            "Amor da minha vida, daqui até a eternidade... nossos destinos foram traçados na maternidade."
+        </p>
+        <a href="#inicio" class="scroll-down"><i class="fa-solid fa-chevron-down"></i></a>
+    </header>
+
+    <div class="container" id="inicio">
+        
+        <!-- SEÇÃO 1 -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/PsRCn06F/IMG-20260531-WA0542.png" alt="Foto Maribella 1">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">Uma Promessa Real</h2>
+                <p>Meu amor, eu tenho muito pra te falar, mas vou pelo principal: Eu sei que às vezes bate aquele medo em você de eu enjoar, mas tira isso da sua cabeça de uma vez por todas.</p>
+                <p class="highlight">EU VOU TE AMAR pelo resto das nossas vidas!</p>
+                <p>E na verdade, nem só até o fim, porque o nosso plano é ir juntos até o além. Quero que você entenda que eu não tô aqui de brincadeira e muito menos para "só te usar". Meu sentimento por você é real, é de verdade.</p>
+                <p>O que eu mais quero é estar do seu lado, te fazer feliz e te dar absolutamente tudo o que você merece, porque você não é só um momento, <span style="font-weight: bold; color: var(--text-dark);">você é pra vida toda.</span></p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 2 -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/pvj8vgRJ/IMG-20260531-WA0540.png" alt="Foto Maribella 2">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">O Nosso Futuro</h2>
+                <p>Eu posso ser sim mais velho que você, mas é apenas 2 anos. Eu estou disposto a esperar o tempo que for necessário pra nós ficarmos juntos, por que eu quero que minha vida seja ao seu lado.</p>
+                <p class="highlight">Eu fiz uma escolha e decidi que quero que você seja a mulher que vai cuidar dos meus filhos; dos NOSSOS filhos.</p>
+                <p>Vamos ter nossos netinhos e ensinar tudo que sabemos sobre a vida. SAIBA QUE HOJE, AMANHÃ, ONTEM E PARA SEMPRE EU VOU TE AMAR, INDEPENDENTE DE QUALQUER COISA!</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO 3 -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/fY09ZRqP/IMG-20260531-WA0539.png" alt="Foto Maribella 3">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">Na Tempestade e na Calmaria</h2>
+                <p>Você tem o rosto mais lindo, o sorriso mais perfeito.. Os olhos mais brilhantes, a boca mais bonita. Queria que você soubesse o quanto você é especial para mim. Não existe pessoa neste mundo que possa tirar seu lugar, porque você é a mais BELA e a mais incrível MULHER que eu já conheci.</p>
+                <p class="highlight">Eu vou te amar também naqueles dias em que você não quer ver ninguém...</p>
+                <p>...assim como eu te amo quando está tudo calmo... eu vou te amar também quando a tempestade chegar e a chuva em seus olhos não parar... eu vou te AMAR e dar o meu melhor para cuidar de você!</p>
+                <p>Fico encantado com a sua beleza, seu jeito. Desculpa se as vezes eu sou meio meloso é que você é perfeita, na real, tudo em você é PERFEITO, sua boca, seu narizinho, seu cabelinho, sua mãozinha.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- GRID DE MOTIVOS -->
+    <section class="reasons">
+        <div class="reasons-container fade-in">
+            <h2 class="reasons-title script-font">Por que eu amo você</h2>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <i class="fa-solid fa-face-smile-beam"></i>
+                    <h3 class="script-font">Seu Sorriso</h3>
+                    <p>Amo o jeito como seu sorriso ilumina qualquer dia nublado, e como o som da sua risada afasta qualquer tristeza do meu coração.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                    <h3 class="script-font">Seu Cuidado</h3>
+                    <p>Amo a forma como você cuida de mim, com uma delicadeza que só você tem, me fazendo sentir especial com os gestos mais simples.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-star"></i>
+                    <h3 class="script-font">Sua Força</h3>
+                    <p>Admiro a sua força, sua bondade e a forma como enxerga a vida com otimismo. Você me inspira a ser melhor e me dá coragem.</p>
+                </div>
+                <div class="reason-card">
+                    <i class="fa-solid fa-moon"></i>
+                    <h3 class="script-font">Nossa Sintonia</h3>
+                    <p>Amo a cumplicidade que temos, as conversas que se estendem até de madrugada, e os momentos em que não precisamos de palavras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL SECTION -->
+    <section class="final-section fade-in">
+        <span class="quote-mark">"</span>
+        <p class="lead">Você chegou na minha vida para tornar tudo melhor e eu cheguei na sua pra fazer de você a mulher mais feliz do universo todo. Você é tudo que eu sempre sonhei, minha neném.</p>
+        
+        <h1 style="font-size: 3rem; margin-top: 60px;">EU TE AMO COM TODA MINHA ALMA, MEU SER E MEU CORAÇÃO!</h1>
+        
+        <p style="font-size: 1.4rem; color: var(--text-light); margin-top: 20px;">
+            Com todo o amor do mundo que eu tenho pra dar a você 😭😭🤍<br>
+            Obrigado por ser essa MULHER INCRÍVEL, você será uma ótima mãe e uma ótima esposa para mim!!!
+        </p>
+        
+        <div class="final-signature script-font">
+            Feliz Aniversário de 15 Anos!<br>
+            <span style="font-size: 2rem; color: var(--text-light); font-family: 'Montserrat', sans-serif;">De seu futuro marido, John.</span>
+        </div>
+    </section>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- Lógica do Áudio ---
+        const audio = document.getElementById("bg-music");
+        const vinyl = document.getElementById("vinyl");
+        const playIcon = document.getElementById("play-icon");
+        const statusText = document.getElementById("music-status");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                vinyl.classList.remove("playing");
+                playIcon.className = "fa-solid fa-play play-btn-overlay";
+                statusText.innerText = "Música pausada";
+            } else {
+                audio.play().then(() => {
+                    vinyl.classList.add("playing");
+                    playIcon.className = "fa-solid fa-pause play-btn-overlay";
+                    statusText.innerText = "Tocando agora ❤️";
+                }).catch(err => {
+                    console.log("Erro ao tocar música:", err);
+                    statusText.innerText = "Erro ao carregar";
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // --- Animações de Scroll (Intersection Observer) ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Tentar iniciar música automaticamente (pode ser bloqueado pelo navegador)
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('visible'));
+            }, 300);
+        });
+    </script>
+</body>
+              </html>
