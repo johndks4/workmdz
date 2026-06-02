@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Minha Futura Esposa - Maribella</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0507;      /* Fundo Preto Absoluto com toque de Rosa */
+            --card-dark: #160d11;    /* Fundo dos blocos / Glassmorphism Dark */
+            --pink-glow: #ff4d6d;    /* Rosa Neon / Shocking Pink */
+            --pink-soft: #ff85a1;    /* Rosa Suave Principal */
+            --rose-gold: #f7aef8;    /* Rosa Pastel brilhante */
+            --text-light: #f8f9fa;   /* Texto Branco de Alta Visibilidade */
+            --text-muted: #b5a6ab;   /* Texto secundário acinzentado/rosa */
+            --border-glow: rgba(255, 77, 109, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .script-font {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* --- ANIMAÇÕES --- */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(10, 5, 7, 0.5), rgba(10, 5, 7, 0.95)), url('https://i.ibb.co/PsRCn06F/IMG-20260531-WA0542.png') center/cover no-repeat fixed;
+            padding: 20px;
+            position: relative;
+        }
+
+        .hero h3 {
+            font-size: 1.3rem;
+            color: var(--pink-soft);
+            text-transform: uppercase;
+            letter-spacing: 10px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 6.5rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.6), 0 0 40px rgba(0,0,0,0.8);
+            line-height: 1.1;
+        }
+
+        .hero .subtitle {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: var(--rose-gold);
+            text-shadow: 0 0 10px rgba(247, 174, 248, 0.4);
+        }
+
+        .hero p.quote {
+            font-size: 1.3rem;
+            max-width: 700px;
+            font-style: italic;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(255, 133, 161, 0.2);
+            border-bottom: 1px solid rgba(255, 133, 161, 0.2);
+            padding: 15px 0;
+            margin-top: 10px;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            font-size: 2.2rem;
+            color: var(--pink-soft);
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            text-shadow: 0 0 10px var(--pink-glow);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-15px); }
+            60% { transform: translateY(-7px); }
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* --- SEÇÕES LADO A LADO --- */
+        .section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 120px;
+            gap: 50px;
+        }
+
+        .section:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .section-img {
+            flex: 1;
+            min-width: 320px;
+            position: relative;
+        }
+
+        .section-img img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 0 30px rgba(255, 77, 109, 0.2);
+            border: 2px solid rgba(255, 133, 161, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .section-img img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 40px rgba(255, 77, 109, 0.45);
+        }
+
+        .section-text {
+            flex: 1.2;
+            min-width: 320px;
+            background: var(--card-dark);
+            padding: 45px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 77, 109, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        .section-text h2 {
+            font-size: 2.8rem;
+            color: var(--pink-soft);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 133, 161, 0.3);
+        }
+
+        .section-text p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-bottom: 18px;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: var(--pink-glow);
+            font-weight: 600;
+            text-shadow: 0 0 8px rgba(255, 77, 109, 0.3);
+        }
+
+        /* --- SEÇÃO DO VÍDEO RE-ESTILIZADA (MINHA PRINCESINHA) --- */
+        .video-section {
+            background: linear-gradient(145deg, #160d11, #0a0507);
+            padding: 60px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 77, 109, 0.2);
+            box-shadow: 0 20px 50px rgba(255, 77, 109, 0.1);
+            margin-bottom: 120px;
+            text-align: center;
+        }
+
+        .video-section h2 {
+            font-size: 3.5rem;
+            color: var(--pink-soft);
+            margin-bottom: 15px;
+            text-shadow: 0 0 15px rgba(255, 133, 161, 0.4);
+        }
+
+        .video-section p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            margin-bottom: 35px;
+        }
+
+        .video-container {
+            max-width: 450px; /* Layout vertical para combinar com vídeo de celular/WA */
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 3px solid var(--pink-soft);
+            box-shadow: 0 0 35px rgba(255, 77, 109, 0.4);
+            position: relative;
+        }
+
+        .video-container video {
+            width: 100%;
+            display: block;
+        }
+
+        /* --- TEXTOS EM FORMATO DE CARTAS GLOW --- */
+        .glowing-letter {
+            background: rgba(22, 13, 17, 0.75);
+            border: 1px solid rgba(255, 77, 109, 0.2);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: inset 0 0 20px rgba(255, 77, 109, 0.05), 0 10px 40px rgba(0,0,0,0.5);
+            margin-bottom: 100px;
+            position: relative;
+        }
+
+        .glowing-letter p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .poetic-break {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            color: var(--rose-gold);
+            text-align: center;
+            margin: 35px 0;
+            font-style: italic;
+            display: block;
+            text-shadow: 0 0 10px rgba(247, 174, 248, 0.5);
+            line-height: 1.4;
+        }
+
+        /* --- GRID DE MOTIVOS --- */
+        .reasons-title {
+            text-align: center;
+            font-size: 3.5rem;
+            color: var(--pink-soft);
+            margin-bottom: 60px;
+            text-shadow: 0 0 15px rgba(255, 133, 161, 0.3);
+        }
+
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-bottom: 120px;
+        }
+
+        .reason-card {
+            background: var(--card-dark);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 77, 109, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--pink-glow);
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.2);
+        }
+
+        .reason-card i {
+            font-size: 2.8rem;
+            color: var(--pink-glow);
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);
+        }
+
+        .reason-card h3 {
+            font-size: 1.6rem;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .reason-card p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* --- SEÇÃO FINAL IMPACTANTE --- */
+        .final-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(to bottom, transparent, #1a0810, #0a0507);
+            border-radius: 30px;
+        }
+
+        .final-section h1 {
+            font-size: 3.8rem;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 77, 109, 0.8);
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        .final-section p.message {
+            font-size: 1.4rem;
+            max-width: 850px;
+            margin: 0 auto 40px;
+            color: var(--pink-soft);
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .signature {
+            font-size: 4.5rem;
+            color: var(--rose-gold);
+            text-shadow: 0 0 15px rgba(247, 174, 248, 0.6);
+            margin-top: 30px;
+        }
+
+        /* --- WIDGET FLUTUANTE DA MÚSICA DE FUNDO --- */
+        .music-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--card-dark);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.3);
+            z-index: 9999;
+            border: 1px solid var(--pink-soft);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .music-widget:hover {
+            transform: scale(1.05);
+        }
+
+        .vinyl {
+            width: 40px;
+            height: 40px;
+            background: #222;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: spin 3s linear infinite;
+            animation-play-state: paused;
+            position: relative;
+        }
+
+        .vinyl::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background: var(--pink-glow);
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+
+        .vinyl.playing {
+            animation-play-state: running;
+        }
+
+        .play-icon-overlay {
+            position: absolute;
+            color: white;
+            font-size: 1rem;
+            z-index: 5;
+        }
+
+        .music-info p {
+            margin: 0;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .music-info span {
+            font-size: 0.75rem;
+            color: var(--pink-soft);
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- RESPONSIVIDADE --- */
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 3.8rem; }
+            .hero .subtitle { font-size: 1.8rem; }
+            .section { flex-direction: column !important; gap: 30px; }
+            .section-text { padding: 30px; }
+            .glowing-letter { padding: 30px 20px; }
+            .final-section h1 { font-size: 2.4rem; }
+            .signature { font-size: 3rem; }
+            .music-widget { bottom: 20px; right: 20px; padding: 10px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MÚSICA DE FUNDO -->
+    <audio id="bg-music" loop>
+        <source src="https://raw.githubusercontent.com/johndks4/workmdz/main/Cazuza%20-%20Exagerado%20(%C3%81udio%20Oficial)%20-%20Cazuza%20(youtube).mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- PLAYER FLUTUANTE -->
+    <div class="music-widget" onclick="toggleMusic()">
+        <div class="vinyl" id="vinyl-player">
+            <i class="fa-solid fa-play play-icon-overlay" id="widget-icon"></i>
+        </div>
+        <div class="music-info">
+            <p>Amor da minha vida</p>
+            <span id="widget-status">Clique para ouvir 🎵</span>
+        </div>
+    </div>
+
+    <!-- TELA INICIAL (HERO) -->
+    <header class="hero">
+        <h3 class="fade-in">12 de Julho • 15 Anos</h3>
+        <h1 class="script-font fade-in" style="transition-delay: 0.1s;">Maribella</h1>
+        <p class="subtitle fade-in" style="transition-delay: 0.2s;">(Maria Eduarda)</p>
+        <p class="quote fade-in" style="transition-delay: 0.3s;">
+            "Amor da minha vida, daqui até a eternidade... nossos destinos foram traçados na maternidade."
+        </p>
+        <div class="scroll-down"><i class="fa-solid fa-chevron-down"></i></div>
+    </header>
+
+    <div class="container">
+        
+        <!-- SEÇÃO 1: FOTO 1 + TEXTO -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/PsRCn06F/IMG-20260531-WA0542.png" alt="Maribella Maravilhosa">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">Uma Promessa Real</h2>
+                <p>Meu amor, eu tenho muito pra te falar, mas vou pelo principal: Eu sei que às vezes bate aquele medo em você de eu enjoar, mas tira isso da sua cabeça de uma vez por todas.</p>
+                <p class="highlight">EUUU VOUUU TEE AMARR pelo resto das nossas vidas!</p>
+                <p>E na verdade, nem só até o fim, porque o nosso plano é ir juntos até o além. Quero que você entenda que eu não tô aqui de brincadeira e muito menos para "só te usar". Meu sentimento por você é real, é de verdade.</p>
+                <p>O que eu mais quero é estar do seu lado, te fazer feliz e te dar absolutamente tudo o que você merece, porque você não é só um momento, você é pra vida toda.</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO DO VÍDEO RE-ESTILIZADA: MINHA PRINCESINHA -->
+        <div class="video-section fade-in">
+            <h2 class="script-font">Minha Princesinha 👑</h2>
+            <p>A mais bela de todo o universo, brilhando em cada detalhe.</p>
+            <div class="video-container">
+                <!-- Autoplay, loop, muted e playsinline garantem que toque sozinho em qualquer celular -->
+                <video autoplay loop muted playsinline>
+                    <source src="https://raw.githubusercontent.com/johndks4/workmdz/main/VID-20260531-WA0544.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeos.
+                </video>
+            </div>
+        </div>
+
+        <!-- SEÇÃO CARTA 1: GLOWING TEXTS -->
+        <div class="glowing-letter fade-in">
+            <p>Te conhecer foi a melhor coisa que já poderia ter me acontecido, você me faz querer continuar todos os dias e não desistir nunca, posso dizer que você é a minha maior inspiração. Quando você chegou em minha vida eu estava machucado em relação ao amor, mas me apaixonei por você mesmo com o meu coração em pedaços não querendo mais me envolver com ninguém com medo de passar tudo de novo.</p>
+            
+            <p>Mas o meu amor por você começou a ser intenso, e resolvi tentar. Te escolhi pra ser feliz ao seu lado e te fazer feliz também, você é e sempre será sem dúvidas o amor da minha vida, ter você comigo é a melhor coisa do mundo. Para muitos deve ser coisa boba, mas para mim cada momento que passamos juntos é incrível, você é aquela pessoa que eu acordo e durmo pensando.</p>
+            
+            <span class="poetic-break">
+                "Você me salvou AMOR, você desenhou estrelas em volta das minhas cicatrizes, e curou todas as feridas que nem foi você que causou."
+            </span>
+
+            <p>De todos que passaram na minha vida, pode ter certeza que você é a única a ser o meu verdadeiro amor, consegui me apaixonar por você em menos de 1 mês, por você sinto coisas indescritíveis. Quero ser pra você o que nunca foram pra mim, quero que se sinta a mulher mais feliz do mundo ao meu lado, pensei que não amaria novamente até o dia que te conheci, você chegou na minha vida e tudo mudou.</p>
+        </div>
+
+        <!-- SEÇÃO 2: FOTO 2 + TEXTO -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/pvj8vgRJ/IMG-20260531-WA0540.png" alt="Sorriso Perfeito">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">O Nosso Destino</h2>
+                <p>Eu posso ser sim mais velho que você, mas é apenas 2 anos. Estou disposto a esperar o tempo que for necessário pra nós ficarmos juntos, por que eu quero que minha vida seja ao seu lado, eu fiz uma escolha e decidi que quero que você seja a mulher que vai cuidar dos meus filhos; dos <span class="highlight">NOSSOS filhos.</span></p>
+                <p>Vamos ter nossos netinhos e ensinar tudo que sabemos sobre a vida. SAIBA QUE HOJE, AMANHÃ, ONTEM E PARA SEMPREE EU VOU TE AMAR, INDEPENDENTE DE QUALQUER COISAA!!</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO CARTA 2: CONTINUAÇÃO DOS TEXTOS INTEGRADOS -->
+        <div class="glowing-letter fade-in">
+            <p>Obrigada por aparecer na minha vida no momento em que eu mais precisava, me fez sentir algo que ninguém mais vai conseguir fazer, e se der errado com você eu não tento com mais ninguém, eu te amo, eu te quero por perto sempre, você é muito importante pra mim e sou muito grato por isso tudo. Uma pessoa que em tão pouco tempo se tornou tão importante na minha vida, quero ser a primeira pessoa que você vai procurar quando não estiver se sentido bem ou quando precisar de algo, ser a pessoa que você vai dividir suas dores.</p>
+            
+            <span class="poetic-break">
+                "Você não sabe o quanto eu sou sortudo por ter vocêee em minha vida... foi você que me ensinou o que realmente significa amar."
+            </span>
+
+            <p>Te amar é sem dúvidas o que eu faço de melhor, ter você comigo é um sonho que eu estava esperando tanto, o seu amor me salvou de tantas coisas que nem você imagina. Ter você ao meu lado é a melhor coisa que me aconteceu, eu não tenho palavras para explicar o bem que você me faz, eu tenho tanta sorte de te ter comigo, e tenho mais sorte ainda de você ser <span class="highlight">MINHAAA!</span></p>
+            
+            <p>Você me transmite uma paz que nem eu mesmo sei explicar, você pode não perceber mas você está me ajudando todos os dias apenas por ser você com o seu jeitinho único. Obrigado por me transformar e por me completar tanto, todas as coisas que você faz são o que me lembram o porquê de eu ser completamente apaixonado por você.</p>
+        </div>
+
+        <!-- SEÇÃO 3: FOTO 3 + TEXTO -->
+        <div class="section fade-in">
+            <div class="section-img">
+                <img src="https://i.ibb.co/fY09ZRqP/IMG-20260531-WA0539.png" alt="Olhos Brilhantes">
+            </div>
+            <div class="section-text">
+                <h2 class="script-font">Perfeição em Cada Detalhe</h2>
+                <p>Você tem o rosto mais lindo, o sorriso mais perfeito.. Os olhos mais brilhantes, a boca mais bonita. Queria que você soubesse o quanto você é especial para mim. Não existe pessoa neste mundo que possa tirar seu lugar, porque você é a mais BELAA e a mais incrível MULHERR que eu já conheci.</p>
+                <p>Quero que você saiba, que eu vou te amar também naqueles dias em que você não quer ver ninguém... assim como eu te amo quando está tudo calmo... <span class="highlight">eu vou te amar também quando a tempestade chegar</span> e a chuva em seus olhos não parar...eu vou te AMARRR e dar o meu melhor para cuidar de você!!!!</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO GRID DE MOTIVOS (POR QUE TE AMO) -->
+        <h2 class="reasons-title script-font">Os Motivos do Meu Coração</h2>
+        <div class="reasons-grid fade-in">
+            <div class="reason-card">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3 class="script-font">Seu Sorriso</h3>
+                <p>AMOOO o jeito como seu sorriso ilumina qualquer dia nublado e afasta toda a tristeza do meu coração.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-star"></i>
+                <h3 class="script-font">Seu Olhar</h3>
+                <p>Como seus olhos brilham quando falamos dos nossos sonhos e nos dão a certeza do nosso futuro juntos.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+                <h3 class="script-font">Seu Cuidado</h3>
+                <p>A forma como você cuida de mim, com uma delicadeza única, e a sua força e bondade que me inspiram a ser melhor.</p>
+            </div>
+            <div class="reason-card">
+                <i class="fa-solid fa-infinity"></i>
+                <h3 class="script-font">Nossa Sintonia</h3>
+                <p>A cumplicidade, as conversas até de madrugada, os silêncios confortáveis e o amor que nos une sem palavras.</p>
+            </div>
+        </div>
+
+        <!-- SEÇÃO EXTRA: AS FASES DA LUA -->
+        <div class="glowing-letter fade-in" style="border-right: 1px solid rgba(255,77,109,0.3); border-left: none;">
+            <p>Já te disse isso tantas vezes mas sempre que digo parece a primeira vez que eu sou completamente e loucamente apaixonado por você. Eu te amo, obrigado por tudo, eu te amo com a alma, com todas as minhas forças, eu te amo a cada fase da lua... eu te amo com a ALMA que nunca acaba e eu sei que o nosso amor também não vai, nosso amor não vai ser algo passageiro, ele irá durar para sempre.</p>
+            
+            <p>Eu te amo com todas as minhas forças porque se depender de mim, sei que elas nunca irão acabar. <span class="highlight">Eu te amo como cada fase da lua</span> porque cada fase que já passamos, cada obstáculo, só mostra que o nosso amor é real.</p>
+            
+            <p>Eu sou completamente APAIXONADO por você, cada detalhe que você possui, até suas imperfeições que para mim são mais do que perfeitas, eu sou apaixonado. Eu me apaixonei por você e sem dúvidas daqui a 20 anos eu ainda serei completamente APAIXONADO por você, eu não me vejo mais sem você, e sem um mundo onde você não esteja. Desde o momento em que você entrou na minha vida eu sabia que você se tornaria a pessoa mais IMPORTANTE pra mim e eu não estava errado.</p>
+        </div>
+
+        <!-- SEÇÃO FINAL -->
+        <div class="final-section fade-in">
+            <h1>EUUUU TEEE AMOOO COMM TODAAA MINHAA ALMAAA E MEUU SERRR! 😭🤍🤍</h1>
+            
+            <p class="message">
+                "Você chegou na minha vida para tornar tudo melhor e eu cheguei na sua pra fazer de você a mulher mais feliz do UNIVERSOOO TODOO. Você entrou na minha vida pra dar mais cor a ela, onde só havia escuridão profunda."
+            </p>
+            
+            <p style="font-size: 1.25rem; color: var(--text-muted);">
+                Então, só queria dizer o quanto você é perfeita. Desculpa se às vezes eu sou meio meloso, tudo em você é perfeito. Obrigado por ser essa MULHER INCRÍVEL, você será uma ótima mãe e uma ótima esposa para mim!
+            </p>
+            
+            <div class="signature script-font">
+                Feliz Aniversário, Minha Maribella!<br>
+                <span style="font-family: 'Montserrat', sans-serif; font-size: 1.8rem; color: var(--pink-soft);">De seu eterno namorado e futuro esposo, John. 🥹🤍</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script>
+        // --- Lógica do Áudio de Fundo ---
+        const audio = document.getElementById("bg-music");
+        const vinyl = document.getElementById("vinyl-player");
+        const icon = document.getElementById("widget-icon");
+        const statusText = document.getElementById("widget-status");
+        let isPlaying = false;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                audio.pause();
+                vinyl.classList.remove("playing");
+                icon.className = "fa-solid fa-play play-icon-overlay";
+                statusText.innerText = "Música pausada";
+            } else {
+                audio.play().then(() => {
+                    vinyl.classList.add("playing");
+                    icon.className = "fa-solid fa-pause play-icon-overlay";
+                    statusText.innerText = "Tocando agora... 💖";
+                }).catch(err => {
+                    console.log("Erro ao tocar:", err);
+                });
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // --- Intersection Observer para Animações Suaves ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Ativar animação inicial
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelectorAll('.hero .fade-in').forEach(el => el.classList.add('visible'));
+            }, 150);
+        });
+    </script>
+</body>
+</html>
