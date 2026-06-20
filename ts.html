@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maribella | Serviços Acadêmicos & Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Variáveis de Cores e Transições */
+        :root {
+            --bg-main: #fce6eb;
+            --bg-card: #ffffff;
+            --text-primary: #4a0b16;
+            --text-secondary: #7a2b3c;
+            --accent: #c9183b;
+            --accent-hover: #a81230;
+            --border-color: rgba(201, 24, 59, 0.12);
+            --shadow: 0 10px 30px rgba(201, 24, 59, 0.06);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Tema Escuro (Dark Mode) */
+        body.dark-theme {
+            --bg-main: #140508;
+            --bg-card: #240d12;
+            --text-primary: #fce6eb;
+            --text-secondary: #dca7b2;
+            --accent: #ff4d6d;
+            --accent-hover: #ff758f;
+            --border-color: rgba(255, 77, 109, 0.15);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+
+        /* Cabecalho */
+        header {
+            background-color: var(--bg-card);
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow);
+            border-bottom: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Botao de Alternar Tema */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--accent);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: white;
+            padding: 14px 35px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(201, 24, 59, 0.2);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Secoes */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 50px;
+            font-size: 1.05rem;
+        }
+
+        /* Sistema de Abas (Tabs) */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--bg-card);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards de Servico */
+        .service-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 30px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 35px rgba(201, 24, 59, 0.1);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .service-price {
+            background-color: var(--bg-main);
+            color: var(--accent);
+            padding: 6px 14px;
+            border-radius: 15px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .service-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .btn-card {
+            background: none;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .service-card:hover .btn-card {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            margin-bottom: 15px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .faq-question {
+            padding: 22px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding: 0 22px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 22px 22px 22px;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-card);
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .social-links {
+            margin: 25px 0;
+        }
+
+        .social-links a {
+            color: var(--accent);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.15);
+        }
+
+        /* Botao Fixo */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1) translateY(-3px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            header { padding: 15px 5%; }
+            nav { display: none; }
+            .hero h1 { font-size: 2.2rem; }
+            section { padding: 60px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">maribella.</a>
+        <div class="nav-actions">
+            <nav>
+                <ul>
+                    <li><a href="#catalogo">Serviços</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeBtn" title="Alternar Tema">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Sua rotina acadêmica e digital organizada de forma impecável.</h1>
+        <p>Desenvolvemos resumos detalhados, materiais de estudo sob medida e designs encantadores para suas redes sociais.</p>
+        <a href="#catalogo" class="btn-primary">Explorar Catálogo <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <section id="catalogo">
+        <h2 class="section-title">Catálogo de Serviços</h2>
+        <p class="section-subtitle">Selecione uma categoria para conhecer as opções e entender o que está incluso.</p>
+
+        <div class="tabs-container">
+            <button class="tab-btn active" onclick="switchTab(event, 'academico')">Acadêmico & Pesquisa</button>
+            <button class="tab-btn" onclick="switchTab(event, 'estudos')">Materiais de Estudo</button>
+            <button class="tab-btn" onclick="switchTab(event, 'slides')">Slides & Apresentações</button>
+            <button class="tab-btn" onclick="switchTab(event, 'design')">Design & Redes Sociais</button>
+        </div>
+
+        <div id="academico" class="tab-content active">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Pesquisa Academicas</span>
+                    <span class="service-price">R$ 10 a R$ 15</span>
+                </div>
+                <p class="service-desc">Busca profunda e fundamentada de dados, artigos científicos e fontes bibliográficas sobre qualquer tema para embasar seu trabalho.</p>
+                <a href="#" class="btn-card" onclick="orderService('Pesquisa Acadêmica')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Resumo Simples</span>
+                    <span class="service-price">R$ 5 a R$ 15</span>
+                </div>
+                <p class="service-desc">Sintetização direta dos tópicos principais de um material, ideal para revisões rápidas antes de provas e testes.</p>
+                <a href="#" class="btn-card" onclick="orderService('Resumo Simples')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Resumo Completo</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Mapeamento completo do conteúdo com explicações aprofundadas, conceitos-chave destrinchados e estrutura robusta para estudo fixo.</p>
+                <a href="#" class="btn-card" onclick="orderService('Resumo Completo')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Resumo para Apresentação</span>
+                    <span class="service-price">R$ 15</span>
+                </div>
+                <p class="service-desc">Conteúdo estruturado em tópicos lógicos e marcantes para te ajudar a guiar sua linha de raciocínio em seminários ou defesas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Resumo para Apresentação')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Resumo de Livro / Filme</span>
+                    <span class="service-price">R$ 10</span>
+                </div>
+                <p class="service-desc">Análise estruturada contendo sinopse, principais acontecimentos, ficha de personagens e conexões lógicas da obra solicitada.</p>
+                <a href="#" class="btn-card" onclick="orderService('Resumo de Livro ou Filme')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Redação</span>
+                    <span class="service-price">R$ 10 a R$ 15</span>
+                </div>
+                <p class="service-desc">Produção de texto dissertativo, argumentativo ou crítico original baseado no tema e regras estruturais escolhidas por você.</p>
+                <a href="#" class="btn-card" onclick="orderService('Redação')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Biografia</span>
+                    <span class="service-price">R$ 5</span>
+                </div>
+                <p class="service-desc">Levantamento histórico Cronológico e bem escrito narrando a trajetória, conquistas e vida de uma figura ou personalidade específica.</p>
+                <a href="#" class="btn-card" onclick="orderService('Biografia')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Texto por Página</span>
+                    <span class="service-price">R$ 8</span>
+                </div>
+                <p class="service-desc">Desenvolvimento ou digitação de conteúdo textual cobrado proporcionalmente por volume de folhas preenchidas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Texto por Página')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Interpretação de Texto</span>
+                    <span class="service-price">R$ 2</span>
+                </div>
+                <p class="service-desc">Análise crítica, identificação de ideias centrais e resolução comentada de questões interpretativas sobre uma obra ou artigo base.</p>
+                <a href="#" class="btn-card" onclick="orderService('Interpretação de Texto')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Formatação ABNT</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Padronização técnica completa do seu trabalho acadêmico (margens, fontes, sumário, citações e referências) para lotes de até 15 páginas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Formatação ABNT')">Solicitar</a>
+            </div>
+        </div>
+
+        <div id="estudos" class="tab-content">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Mapa Mental</span>
+                    <span class="service-price">R$ 8 a R$ 15</span>
+                </div>
+                <p class="service-desc">Diagrama altamente visual interconectado por ramificações, cores e palavras-chave. Excelente para fixar matérias complexas de forma dinâmica.</p>
+                <a href="#" class="btn-card" onclick="orderService('Mapa Mental')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Flashcard (Unidade)</span>
+                    <span class="service-price">R$ 1</span>
+                </div>
+                <p class="service-desc">Cartões de memorização rápida ativa (Pergunta na frente, Resposta atrás). Perfeito para estudo de idiomas, fórmulas ou termos de concursos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Flashcard')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Ficha de Estudo</span>
+                    <span class="service-price">R$ 10</span>
+                </div>
+                <p class="service-desc">Fichamento compacto reunindo conceitos fundamentais, fórmulas e dados estritamente necessários para consulta rápida.</p>
+                <a href="#" class="btn-card" onclick="orderService('Ficha de Estudo')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Cronograma de Estudos</span>
+                    <span class="service-price">R$ 5 a R$ 20</span>
+                </div>
+                <p class="service-desc">Planejamento de rotina sob medida. Distribuímos seus assuntos de estudo pelos dias da semana com metas claras com base no seu tempo disponível.</p>
+                <a href="#" class="btn-card" onclick="orderService('Cronograma de Estudos')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Planner</span>
+                    <span class="service-price">R$ 2 a R$ 20</span>
+                </div>
+                <p class="service-desc">Layout estruturado para organização de tarefas diárias, semanais e mensais focado em produtividade pessoal ou acadêmica.</p>
+                <a href="#" class="btn-card" onclick="orderService('Planner')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Checklist</span>
+                    <span class="service-price">R$ 5</span>
+                </div>
+                <p class="service-desc">Uma lista de verificação passo a passo direta para controle de entregas, tarefas cumpridas ou auditoria de etapas de projetos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Checklist')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Questionário</span>
+                    <span class="service-price">R$ 2</span>
+                </div>
+                <p class="service-desc">Formulação de blocos de perguntas estratégicas para pesquisas ou listas de fixação de conteúdos específicos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Questionário')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Exercícios Resolvidos</span>
+                    <span class="service-price">R$ 3</span>
+                </div>
+                <p class="service-desc">Resolução detalhada e comentada passo a passo de exercícios e questões para você entender de verdade a lógica da resposta.</p>
+                <a href="#" class="btn-card" onclick="orderService('Exercícios Resolvidos')">Solicitar</a>
+            </div>
+        </div>
+
+        <div id="slides" class="tab-content">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Slide Simples</span>
+                    <span class="service-price">R$ 15</span>
+                </div>
+                <p class="service-desc">Apresentação limpa, organizada por tópicos diretos e design minimalista focado na clareza das informações.</p>
+                <a href="#" class="btn-card" onclick="orderService('Slide Simples')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Slide Detalhado</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Apresentação premium com design personalizado, elementos visuais estratégicos, transições profissionais e alto impacto visual.</p>
+                <a href="#" class="btn-card" onclick="orderService('Slide Detalhado')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Slides com Pesquisa</span>
+                    <span class="service-price">R$ 8</span>
+                </div>
+                <p class="service-desc">Trabalho completo: nós fazemos a investigação teórica do tema do zero e montamos o design completo dos slides com base no que descobrimos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Slides com Pesquisa')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Slides sem Pesquisa</span>
+                    <span class="service-price">R$ 6</span>
+                </div>
+                <p class="service-desc">Você nos envia os textos e o material bruto que já tem em mãos, e nós cuidamos apenas do design profissional e estruturação nos slides.</p>
+                <a href="#" class="btn-card" onclick="orderService('Slides sem Pesquisa')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Slide por Página</span>
+                    <span class="service-price">R$ 2 a R$ 3</span>
+                </div>
+                <p class="service-desc">Modelo flexível de cobrança focado estritamente na quantidade final de telas/lâminas de apresentação criadas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Slide por Página')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Fala para Apresentação</span>
+                    <span class="service-price">R$ 5</span>
+                </div>
+                <p class="service-desc">Roteiro escrito em formato de guia ("O que dizer em cada tela"), te ajudando a fazer um discurso confiante, sem gaguejar e no tempo certo.</p>
+                <a href="#" class="btn-card" onclick="orderService('Fala para Apresentação')">Solicitar</a>
+            </div>
+        </div>
+
+        <div id="design" class="tab-content">
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Post para Redes Sociais</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Arte digital estática profissional alinhada à sua identidade visual para atrair curtidas e clientes no feed do seu Instagram/Facebook.</p>
+                <a href="#" class="btn-card" onclick="orderService('Post para Redes Sociais')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Carrossel</span>
+                    <span class="service-price">R$ 10</span>
+                </div>
+                <p class="service-desc">Postagens sequenciais fluidas de arrastar para o lado. Perfeito para contar histórias ou explicar conteúdos densos gerando salvamentos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Carrossel')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Story Interativo</span>
+                    <span class="service-price">R$ 15</span>
+                </div>
+                <p class="service-desc">Artes em formato vertical planejadas estrategicamente para gerar engajamento através de enquetes, caixas de perguntas ou ofertas rápidas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Story Interativo')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Convite Digital</span>
+                    <span class="service-price">R$ 25</span>
+                </div>
+                <p class="service-desc">Design personalizado de convites interativos ou estáticos para aniversários, comemorações ou eventos corporativos, prontos para enviar no WhatsApp.</p>
+                <a href="#" class="btn-card" onclick="orderService('Convite Digital')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Panfleto / Folder</span>
+                    <span class="service-price">R$ 25</span>
+                </div>
+                <p class="service-desc">Layout promocional profissional estruturado para divulgação local ou digital de ofertas, inaugurações ou serviços.</p>
+                <a href="#" class="btn-card" onclick="orderService('Panfleto / Folder')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Cartaz</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Desenvolvimento de comunicados em grandes formatos visuais para murais informativos ou cartazes de eventos.</p>
+                <a href="#" class="btn-card" onclick="orderService('Cartaz')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Flyer</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Folheto dinâmico focado em divulgar de forma limpa e direta um único produto principal, evento urgente ou cupom especial.</p>
+                <a href="#" class="btn-card" onclick="orderService('Flyer')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Banner Digital</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Arte em formatos esticados ideais para cabeçalhos de sites, lojas virtuais, canais do YouTube ou lona de fachadas físicas.</p>
+                <a href="#" class="btn-card" onclick="orderService('Banner Digital')">Solicitar</a>
+            </div>
+            <div class="service-card">
+                <div class="service-header">
+                    <span class="service-title">Vídeo com Conteúdo</span>
+                    <span class="service-price">R$ 20</span>
+                </div>
+                <p class="service-desc">Edição de clipes de vídeos curtos (Reels, TikTok ou Shorts) com cortes dinâmicos, inserção de legendas chamativas e ajustes de áudio.</p>
+                <a href="#" class="btn-card" onclick="orderService('Vídeo com Conteúdo')">Solicitar</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <p class="section-subtitle">Tudo o que você precisa saber antes de fechar o seu pedido.</p>
+        
+        <div class="faq-container">
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Como funciona a contratação? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Você escolhe o serviço aqui no catálogo e clica em "Solicitar". O site abrirá seu WhatsApp com uma mensagem pronta dizendo qual o item escolhido. Lá, acertamos prazos e detalhes do conteúdo!</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Quais são as formas de pagamento aceitas? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Trabalhamos de forma prática via PIX ou transferência bancária. O pagamento é alinhado no ato do fechamento do pedido.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">O que acontece se eu precisar de ajustes no material? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Buscamos entregar tudo perfeito de primeira, mas correções pontuais para alinhar com o combinado inicial podem ser solicitadas diretamente na nossa conversa sem problemas!</div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <h2 class="logo">maribella.</h2>
+        <p>A excelência que os seus estudos e marcas merecem.</p>
+        <div class="social-links">
+            <a href="https://wa.me/5521977572858" target="_blank" title="Chamar no WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/estude.com.maribella" target="_blank" title="Seguir no Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="font-size: 0.85rem; opacity: 0.7;">© 2026 Maribella. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5521977572858?text=Olá,%20Maribella!%20Acessei%20seu%20site%20e%20gostaria%20de%20conversar." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Gerenciamento de Abas (Tabs)
+        function switchTab(event, tabId) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Script de envio do pedido estruturado no WhatsApp
+        function orderService(serviceName) {
+            const formattedText = encodeURIComponent(`Olá, Maribella! Vi seu catálogo digital e gostaria de solicitar mais informações ou fechar o serviço de: *${serviceName}*. Como podemos combinar?`);
+            window.open(`https://wa.me/5521977572858?text=${formattedText}`, '_blank');
+        }
+
+        // Abrir/Fechar FAQ
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const icon = element.querySelector('.faq-question i');
+            if (element.classList.contains('active')) {
+                icon.className = 'fas fa-chevron-up';
+            } else {
+                icon.className = 'fas fa-chevron-down';
+            }
+        }
+
+        // Alternancia de Tema (Dark / Light) com Armazenamento no navegador
+        const themeBtn = document.getElementById('themeBtn');
+        const icon = themeBtn.querySelector('i');
+
+        // Verifica se ja tinha preferencia salva
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+            icon.className = 'fas fa-sun';
+        }
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    </script>
+</body>
+</html>
