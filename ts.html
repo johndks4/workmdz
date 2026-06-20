@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maribella | Serviços Acadêmicos e Design</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            /* Cores baseadas na imagem enviada */
+            --primary-red: #c9183b; /* Cor do texto e logo */
+            --bg-pink: #fce6eb;     /* Cor de fundo clarinha */
+            --white: #ffffff;
+            --text-dark: #4a0b16;   /* Texto escuro para contraste */
+            --text-light: #7a2b3c;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-pink);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Cabecalho */
+        header {
+            background-color: var(--bg-pink);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(201, 24, 59, 0.1);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            text-decoration: none;
+            font-family: serif; /* Dando um toque mais clássico próximo a logo da imagem */
+            letter-spacing: -1px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-red);
+            font-weight: 600;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--bg-pink);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-red);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-red);
+            color: var(--white);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(201, 24, 59, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: #a81230;
+            transform: scale(1.05);
+        }
+
+        /* Secoes Padrao */
+        section {
+            padding: 60px 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: var(--primary-red);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .section-title::before, .section-title::after {
+            content: "—";
+            color: var(--primary-red);
+        }
+
+        /* Tabela de Preços (Inspirada na Imagem) */
+        .pricing-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(201, 24, 59, 0.08);
+        }
+
+        .price-list {
+            list-style: none;
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            position: relative;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .price-item::before {
+            content: "•";
+            color: var(--primary-red);
+            position: absolute;
+            left: -15px;
+        }
+
+        .price-name {
+            background: var(--white);
+            padding-right: 10px;
+            z-index: 2;
+        }
+
+        .price-value {
+            background: var(--white);
+            padding-left: 10px;
+            color: var(--primary-red);
+            font-weight: 700;
+            z-index: 2;
+        }
+
+        .price-dots {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 6px;
+            border-bottom: 2px dotted rgba(201, 24, 59, 0.3);
+            z-index: 1;
+        }
+
+        .price-item small {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }
+
+        .request-btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(201, 24, 59, 0.1);
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-red);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease;
+            color: var(--text-dark);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px 20px;
+            max-height: 200px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-red);
+            color: var(--white);
+            text-align: center;
+            padding: 50px 20px;
+            margin-top: 40px;
+        }
+
+        footer .logo {
+            color: var(--white);
+        }
+
+        .social-links {
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 2rem;
+            margin: 0 15px;
+            text-decoration: none;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Botão Flutuante do WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: transform 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .pricing-container {
+                grid-template-columns: 1fr; /* Em celulares fica uma coluna só */
+            }
+            nav ul {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">maribella.</a>
+        <nav>
+            <ul>
+                <li><a href="#servicos">Tabela de Preços</a></li>
+                <li><a href="#faq">Dúvidas</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Organize seus Estudos e Projetos</h1>
+        <p>Resumos, slides, mapas mentais, cronogramas e design para redes sociais. Tudo feito sob medida com excelência e dedicação.</p>
+        <a href="#servicos" class="btn-primary">Ver Tabela de Preços</a>
+    </section>
+
+    <section id="servicos">
+        <h2 class="section-title">Tabela de Preços</h2>
+        
+        <div class="pricing-container">
+            <ul class="price-list">
+                <li class="price-item"><span class="price-name">Pesquisa</span> <span class="price-dots"></span> <span class="price-value">R$ 10 a R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Resumo simples</span> <span class="price-dots"></span> <span class="price-value">R$ 5 a R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Resumo completo</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Resumo para apresentação</span> <span class="price-dots"></span> <span class="price-value">R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Resumo de livro/filme</span> <span class="price-dots"></span> <span class="price-value">R$ 10</span></li>
+                <li class="price-item"><span class="price-name">Redação</span> <span class="price-dots"></span> <span class="price-value">R$ 10 a R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Biografia</span> <span class="price-dots"></span> <span class="price-value">R$ 5</span></li>
+                <li class="price-item"><span class="price-name">Texto por página</span> <span class="price-dots"></span> <span class="price-value">R$ 8</span></li>
+                <li class="price-item"><span class="price-name">Questionário</span> <span class="price-dots"></span> <span class="price-value">R$ 2</span></li>
+                <li class="price-item"><span class="price-name">Interpretação de texto</span> <span class="price-dots"></span> <span class="price-value">R$ 2</span></li>
+                <li class="price-item"><span class="price-name">Exercícios resolvidos</span> <span class="price-dots"></span> <span class="price-value">R$ 3</span></li>
+                <li class="price-item"><span class="price-name">Mapa mental</span> <span class="price-dots"></span> <span class="price-value">R$ 8 a R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Flashcard (unidade)</span> <span class="price-dots"></span> <span class="price-value">R$ 1</span></li>
+                <li class="price-item"><span class="price-name">Ficha de estudo</span> <span class="price-dots"></span> <span class="price-value">R$ 10</span></li>
+                <li class="price-item"><span class="price-name">Cronograma de estudos</span> <span class="price-dots"></span> <span class="price-value">R$ 5 a R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Planner</span> <span class="price-dots"></span> <span class="price-value">R$ 2 a R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Checklist</span> <span class="price-dots"></span> <span class="price-value">R$ 5</span></li>
+                <li class="price-item"><span class="price-name">Slide por página</span> <span class="price-dots"></span> <span class="price-value">R$ 2 a R$ 3</span></li>
+                <li class="price-item"><span class="price-name">Slide simples</span> <span class="price-dots"></span> <span class="price-value">R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Slide detalhado</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Slides com pesquisa</span> <span class="price-dots"></span> <span class="price-value">R$ 8</span></li>
+                <li class="price-item"><span class="price-name">Slides sem pesquisa</span> <span class="price-dots"></span> <span class="price-value">R$ 6</span></li>
+            </ul>
+
+            <ul class="price-list">
+                <li class="price-item"><span class="price-name">Fala para apresentação</span> <span class="price-dots"></span> <span class="price-value">R$ 5</span></li>
+                <li class="price-item"><span class="price-name">Publicação para redes sociais</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Carrossel</span> <span class="price-dots"></span> <span class="price-value">R$ 10</span></li>
+                <li class="price-item"><span class="price-name">Story</span> <span class="price-dots"></span> <span class="price-value">R$ 15</span></li>
+                <li class="price-item"><span class="price-name">Convite</span> <span class="price-dots"></span> <span class="price-value">R$ 25</span></li>
+                <li class="price-item"><span class="price-name">Panfleto</span> <span class="price-dots"></span> <span class="price-value">R$ 25</span></li>
+                <li class="price-item"><span class="price-name">Cartaz</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Flyer</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Banner</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name">Vídeo com conteúdo</span> <span class="price-dots"></span> <span class="price-value">R$ 20</span></li>
+                <li class="price-item"><span class="price-name" style="margin-top: 15px;">Formatação ABNT</span> <span class="price-dots"></span> <span class="price-value" style="margin-top: 15px;">R$ 20</span></li>
+                <small>(até 15 páginas)</small>
+            </ul>
+        </div>
+
+        <div class="request-btn-container">
+            <a href="https://wa.me/5521977572858?text=Olá,%20Maribella!%20Vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20serviço." target="_blank" class="btn-primary">
+                <i class="fab fa-whatsapp"></i> Fazer Pedido pelo WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2 class="section-title">Perguntas Frequentes</h2>
+        <div class="faq-container" style="max-width: 800px; margin: 0 auto;">
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Como faço para solicitar um pedido? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">É só clicar no botão do WhatsApp e nos enviar uma mensagem informando qual o serviço desejado. Retornaremos o mais rápido possível para ajustar os detalhes!</div>
+            </div>
+            
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Quais são as formas de pagamento? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">Aceitamos transferências e PIX. Todos os detalhes são combinados no momento do fechamento do pedido pelo WhatsApp.</div>
+            </div>
+
+            <div class="faq-item" onclick="toggleFaq(this)">
+                <div class="faq-question">Qual o prazo de entrega? <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer">O prazo varia de acordo com o serviço e a complexidade. Ao nos mandar mensagem, avaliamos seu projeto e passamos uma data de entrega garantida.</div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contato">
+        <h2 class="logo" style="margin-bottom: 20px;">maribella.</h2>
+        <p>Acompanhe nosso trabalho ou chame para tirar dúvidas!</p>
+        <div class="social-links">
+            <a href="https://wa.me/5521977572858" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/estude.com.maribella" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="font-size: 0.9rem; margin-top: 20px; opacity: 0.8;">© 2026 Maribella. Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5521977572858?text=Olá,%20Maribella!%20Vim%20pelo%20site." target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        function toggleFaq(element) {
+            element.classList.toggle('active');
+            const icon = element.querySelector('i');
+            if(element.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+</html>
